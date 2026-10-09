@@ -1,55 +1,50 @@
-# ToDo-App — Task Management App
+# React Todo App with API (complete)
 
-A responsive and modern Todo application created for managing daily tasks. This project was built to demonstrate the practical application of React, TypeScript, and Bulma CSS. It is fully adaptive, handles dynamic API operations (CRUD), and provides a seamless user experience across mobile, tablet, and desktop devices.
+It is the third part of the React Todo App with API.
 
-DEMO LINK (https://YYarik.github.io/ToDo-App/)
+Take your code implemented for [Add and Delete](https://github.com/mate-academy/react_todo-app-add-and-delete)
+and implement the ability to toggle and rename todos.
 
-🚀 How to run locally
+> Here is [the working example](https://mate-academy.github.io/react_todo-app-with-api/)
 
-To run this project on your local machine, follow these steps:
+## Toggling a todo status
 
-Clone the repository:
-```bash
-git clone https://github.com/YYarik/ToDo-App.git
-```
+Toggle the `completed` status on `TodoStatus` change:
+- Install Prettier Extention and use this [VSCode settings](https://mate-academy.github.io/fe-program/tools/vscode/settings.json) to enable format on save.
+- covered the todo with a loader overlay while waiting for API response;
+- the status should be changed on success;
+- show the `Unable to update a todo` notification in case of API error.
 
-Navigate to the project folder:
-```bash
-cd ToDo-App
-```
+Add the ability to toggle the completed status of all the todos with the `toggleAll` checkbox:
 
-Install dependencies:
-```bash
-npm install
-```
+- `toggleAll` button should have `active` class only if all the todos are completed;
+- `toggleAll` click changes its status to the opposite one, and sets this new status to all the todos;
+- it should work the same as several individual updates of the todos which statuses were actually changed;
+- don't send requests for the todos that were not changed;
 
-Start the development server:
-```bash
-npm start
-```
+## Renaming a todo
 
-## Technologies Used
+Implement the ability to edit a todo title on double click:
 
-### Frontend & Styling
-- React (Functional components, Hooks)
-- TypeScript (Static typing and safety)
-- Bulma CSS (Responsive CSS framework)
-- SCSS (Sass preprocessor for custom styles)
+- show the edit form instead of the title and remove button;
+- saves changes on the form submit (just press `Enter`);
+- save changes when the field loses focus (`onBlur`);
+- if the new title is the same as the old one just cancel editing;
+- cancel editing on `Esс` key `keyup` event;
+- if the new title is empty delete the todo the same way the `x` button does it;
+- if the title was changed show the loader while waiting for the API response;
+- update the todo title on success;
+- show `Unable to update a todo` in case of API error;
+- or the deletion error message if we tried to delete the todo.
 
-### API & State Management
-- REST API integration for CRUD operations (GET, POST, PATCH, DELETE)
-- Fetch API Client for asynchronous networking
-- Dynamic UI states (loading spinners, disabled controls during requests)
-- Error handling with dismissible notification banners
+## If you want to enable tests
+- open `cypress/integration/page.spec.js`
+- replace `describe.skip` with `describe` for the root `describe`
 
-### Tooling & Testing
-- Vite (Fast development server and bundling)
-- Cypress (End-to-end testing)
-- ESLint & Stylelint (Code linting and formatting standards)
+> ❗❗All tests should pass, even if some behaviour is not well explained in the task❗❗
 
-## Project Features & Architecture
-- **Interactive Editing**: Double-click to rename a task with automatic save on blur or Enter, and cancel on Escape.
-- **Bulk Actions**: Select all tasks to toggle completion status, or clear all completed tasks with one click.
-- **Client-Side Filtering**: Easily filter tasks by their completion status (All, Active, Completed).
-- **Resilient UI**: Disables input fields and shows visual loading states during network requests to prevent duplicate submissions, with error notifications on API failure.
-- **Adaptive Design**: Fully responsive layout designed to look great on screens of any size.
+## Instructions
+
+- Implement a solution following the [React task guideline](https://github.com/mate-academy/react_task-guideline#react-tasks-guideline).
+- Use the [React TypeScript cheat sheet](https://mate-academy.github.io/fe-program/js/extra/react-typescript).
+- Replace `<your_account>` with your Github username in the [DEMO LINK](https://YYarik.github.io/react_todo-app-with-api/) and add it to the PR description.
